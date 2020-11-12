@@ -36,4 +36,10 @@ class ListPost extends Component
 
         $this->updateStateId = 0;
     }
+
+    public function deletePost($postId)
+    {
+        $post = Post::find($postId);
+        $post->delete();
+    }
 }

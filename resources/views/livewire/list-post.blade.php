@@ -4,7 +4,17 @@
             <div>
                 <span class="text-xl font-bold">{{ $post->user->name }}</span>
                 <span class="text-grey-600">{{ $post->created_at->diffForHumans() }}</span>
-                <button wire:click="showUpdateForm({{ $post->id }})" class="p-2 bg-yellow-300 hover:bg-yellow-200 text-white rounded-md">Edit</button>
+                <button
+                    wire:click="showUpdateForm({{ $post->id }})"
+                    class="py-1.5 px-3 bg-green-500 hover:bg-green-400 text-white text-sm rounded-md focus:outline-none"
+                    >Ubah
+                </button>
+                <button
+                    onclick="return confirm('Yakin hapus post nih?') || event.stopImmediatePropagation()"
+                    wire:click="deletePost({{ $post->id }})"
+                    class="py-1.5 px-3 bg-red-600 hover:bg-red-500 text-white text-sm rounded-md focus:outline-none"
+                    >Hapus
+                </button>
             </div>
             <div>
                 @if ($updateStateId !== $post->id)
@@ -20,7 +30,7 @@
                     <button
                         wire:click="updatePost({{ $post->id }})"
                         class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-400 rounded-md"
-                        >Save
+                        >Simpan
                     </button>
                 @endif
             </div>
